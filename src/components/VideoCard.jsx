@@ -26,22 +26,26 @@ function VideoCard(props) {
           alt="item-img"
         />
       ) : (
-        <img
-          className="h-[9rem] sm:h-[12rem] w-full shadow-[0_8px_40px_rgb(0,0,0,0.12)] rounded-lg"
-          src={props.itemImgUrl ? '/noLoad.png' : '/noImg.png'}
-          alt="item-img"
-        />
       )} */}
-      <p className="text-md sm:text-lg my-2 font-sans font-semibold">
-        ₹ {props.videoUrl}
-      </p>
+
+      <img
+        className="h-[9rem] sm:h-[12rem] mb-4 w-full shadow-[0_8px_40px_rgb(0,0,0,0.12)] rounded-lg"
+        src="/vid.jpg"
+        alt="item-img"
+      />
+      <a
+        href={props.videoUrl}
+        className="text-lg font-sans font-semibold hover:text-red-400"
+      >
+        Watch video ▶️
+      </a>
       <p className="text-md sm:text-xl sm:mb-2"> {props.videoTitle}</p>
 
-      <div className="grid grid-cols-2 gap-4 p-2">
+      <div className="p-2">
         <button
           type="button"
-          onClick={() => props.onLike() && handleHeart()}
-          className="bg-[#faf6ff] shadow-md hover:bg-[#ffffff] text-slate-600 active:translate-y-1 text-xs sm:text-base py-3 rounded-2xl border-none"
+          onClick={() => handleHeart() && props.onLike()}
+          className="bg-[#faf6ff] w-[50%] shadow-md hover:bg-[#ffffff] text-slate-600 active:translate-y-1 text-xs sm:text-base py-3 rounded-2xl border-none"
         >
           Like {heart}
         </button>

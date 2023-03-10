@@ -2,14 +2,9 @@ import './App.css';
 import Videos from '../components/Videos';
 
 function App() {
-  function handleLike() {
-    alert('liked');
-  }
-
   return (
     <div className="App">
-      Honka Honka!
-      <Videos onLike={handleLike} />
+      <Videos />
     </div>
   );
 }

@@ -21,7 +21,7 @@ function Items(props) {
   return (
     <>
       {videoInfo ? (
-        <div className="bg-gradient-to-r from-violet-100 to-pink-100 px-2 md:px-28 lg:px-36 grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 pt-8">
+        <div className="bg-[#ECF2FF] px-2 md:px-28 lg:px-36 grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 pt-8">
           {videoInfo.map((video, index) => (
             <VideoCard
               key={index}
@@ -33,7 +33,6 @@ function Items(props) {
         </div>
       ) : (
         <div className="bg-gradient-to-r from-violet-100 to-pink-100 px-2 md:px-28 lg:px-40 grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 pt-8">
-          <SkeletonCard />
           <SkeletonCard /> <SkeletonCard /> <SkeletonCard /> <SkeletonCard />
           <SkeletonCard /> <SkeletonCard /> <SkeletonCard /> <SkeletonCard />
           <SkeletonCard /> <SkeletonCard /> <SkeletonCard /> <SkeletonCard />
@@ -44,8 +43,3 @@ function Items(props) {
 }
 
 export default Items;
-// <img
-//   className="w-full mt-[30%] mb-[80%] md:mb-[30%] lg:mt-0 lg:mb-0"
-//   src="/loading.gif"
-//   alt="loading"
-// />;
