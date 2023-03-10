@@ -15,24 +15,24 @@ const modalStyles = {
 
 // Render function for Prismic headless CMS pages
 function YouTubePlayer(props) {
-  const [modalIsOpen, setModalIsOpen] = React.useState(false);
+  // const [modalIsOpen, setModalIsOpen] = React.useState(false);
 
   let videoCode;
   props.videoUrl
     ? (videoCode = props.videoUrl.split('v=')[1].split('&')[0])
     : console.log();
-  const checkElapsedTime = (e) => {
-    console.log(e.target.playerInfo.playerState);
-    const duration = e.target.getDuration();
-    const currentTime = e.target.getCurrentTime();
-    if (currentTime / duration > 0.95) {
-      setModalIsOpen(true);
-    }
-  };
+  // const checkElapsedTime = (e) => {
+  //   console.log(e.target.playerInfo.playerState);
+  //   const duration = e.target.getDuration();
+  //   const currentTime = e.target.getCurrentTime();
+  //   if (currentTime / duration > 0.95) {
+  //     setModalIsOpen(true);
+  //   }
+  // };
 
   const opts = {
     height: '220',
-    width: '250',
+    width: '248',
     playerVars: {
       // https://developers.google.com/youtube/player_parameters
       autoplay: 0,
@@ -45,7 +45,7 @@ function YouTubePlayer(props) {
         className=""
         videoId={videoCode}
         containerClassName="embed embed-youtube"
-        onStateChange={(e) => checkElapsedTime(e)}
+        // onStateChange={(e) => checkElapsedTime(e)}
         opts={opts}
       />
     </div>

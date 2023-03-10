@@ -9,7 +9,7 @@ function Navbar(props) {
           className="text-[#f1f1f6] hover:text-[#ffffff] md:ml-6 text-4xl"
           onClick={handleHome}
         >
-          Video Playa
+          VideoPlaya
         </button>
       </div>
       <div className="grid grid-cols-3 py-4">

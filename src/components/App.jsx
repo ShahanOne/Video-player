@@ -16,9 +16,21 @@ function App() {
           Nav3="Login/Register"
           onNav3={handleLogin}
         />
-        <p className="text-white text-[4rem] font-fredoka p-20 ">
-          Welcome to VideoPlaya !
-        </p>
+        <div className="text-center px-12 py-4">
+          <p className="text-white text-[3.5rem] font-fredoka py-12 ">
+            Welcome to VideoPlaya !
+          </p>
+          <div className="grid grid-cols-2">
+            <img
+              className="text-center rounded-xl animate-slow-bounce"
+              src="/billie.webp"
+              alt=""
+            />
+            <p className="text-white text-[3rem] font-fredoka p-20 ">
+              Upload, Watch and Like entaertaining videos !
+            </p>
+          </div>
+        </div>
       </div>
       <Videos />
       <Footer />

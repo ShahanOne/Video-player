@@ -1,6 +1,6 @@
 function Footer() {
   return (
-    <div className="bg-gradient-to-r from-red-500 to-orange-400 py-4">
+    <div className="bg-gradient-to-r from-red-500 to-orange-400 py-2">
       <center>
         <p className="text-[#f1f1f6] p-[1%] m-0 text-lg">
           {'</>'} by{' '}
