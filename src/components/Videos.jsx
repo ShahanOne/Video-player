@@ -21,7 +21,7 @@ function Items(props) {
   return (
     <>
       {videoInfo ? (
-        <div className="bg-[#ECF2FF] px-2 md:px-28 lg:px-36 grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 pt-8">
+        <div className="bg-[#fff4ec] px-2 md:px-28 lg:px-36 grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 pt-8">
           {videoInfo.map((video, index) => (
             <VideoCard
               key={index}
