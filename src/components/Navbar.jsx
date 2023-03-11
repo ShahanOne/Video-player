@@ -12,7 +12,7 @@ function Navbar(props) {
           VideoPlaya
         </button>
       </div>
-      <div className="grid grid-cols-3 py-4">
+      <div className="grid grid-cols-4 py-4">
         <button
           className="text-lg font-semibold border-none active:translate-y-0.5 text-[#f1f1f6] hover:text-[#ffffff]"
           onClick={props.onNav1}
@@ -30,6 +30,12 @@ function Navbar(props) {
           onClick={props.onNav3}
         >
           {props.Nav3}
+        </button>
+        <button
+          className="text-lg font-semibold border-none active:translate-y-0.5 text-[#f1f1f6] hover:text-[#ffffff]"
+          onClick={props.onNav4}
+        >
+          {props.Nav4}
         </button>
       </div>
     </nav>
