@@ -38,7 +38,7 @@ function UserPage(props) {
   //Add to Likes
   async function handlelike(video) {
     try {
-      const res = await fetch('http://localhost:3001/like', {
+      const res = await fetch('https://videoplayaserver.cyclic.app/like', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -74,7 +74,7 @@ function UserPage(props) {
     e.preventDefault();
 
     try {
-      const res = await fetch('http://localhost:3001/comment', {
+      const res = await fetch('https://videoplayaserver.cyclic.app/comment', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

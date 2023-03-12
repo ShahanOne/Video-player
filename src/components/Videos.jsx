@@ -7,7 +7,7 @@ function Items(props) {
 
   useEffect(() => {
     async function getVideosInfo() {
-      await fetch('http://localhost:3001/api')
+      await fetch('https://videoplayaserver.cyclic.app/api')
         .then((res) => res.json())
         .then((data) => setVideoInfo(data));
 

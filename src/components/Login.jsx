@@ -19,7 +19,7 @@ function Login(props) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch('http://localhost:3001/login', {
+      const res = await fetch('https://videoplayaserver.cyclic.app/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

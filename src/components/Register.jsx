@@ -19,7 +19,7 @@ function Register(props) {
     e.preventDefault();
     props.onRegister();
     try {
-      const res = await fetch('http://localhost:3001/register', {
+      const res = await fetch('https://videoplayaserver.cyclic.app/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
