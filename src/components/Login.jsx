@@ -53,7 +53,7 @@ function Login(props) {
           x
         </b>
       </p>
-      <div className="bg-[#fef4f0] text-orange-500 mx-8 md:mx-72 rounded-xl">
+      <div className="bg-[#2C3333] text-orange-500 mx-8 md:mx-72 rounded-xl">
         <div className="loginDiv px-8">
           <p className="authenticateText font-fredoka text-xl md:text-3xl my-4 py-4">
             {' '}
@@ -64,7 +64,7 @@ function Login(props) {
               Username <span style={{ color: 'red' }}>*</span>
             </label>
             <input
-              className="block border-none rounded w-[100%] md:w-[95%] h-8 my-4 md:my-6 focus:outline-none"
+              className="block bg-gray-500 text-slate-100  border-none rounded w-[100%] md:w-[95%] h-8 my-4 md:my-6 focus:outline-none"
               type="text"
               value={userName}
               onChange={handleUserNameChange}
@@ -74,7 +74,7 @@ function Login(props) {
               Password <span style={{ color: 'red' }}>*</span>
             </label>
             <input
-              className="block border-none rounded w-[100%] md:w-[95%] h-8 my-4 md:my-6 focus:outline-none"
+              className="block bg-gray-500 text-slate-100  border-none rounded w-[100%] md:w-[95%] h-8 my-4 md:my-6 focus:outline-none"
               type="password"
               value={password}
               onChange={handlePasswordChange}

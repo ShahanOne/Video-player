@@ -28,15 +28,9 @@ function VideoCard(props) {
       setHeart('♡');
     }
   }
-  function handleBubble() {
-    if (bubble === '💬') {
-      setBubble('🗨️');
-    } else if (bubble === '🗨️') {
-      setBubble('💬');
-    }
-  }
+
   return (
-    <div className="shadow-[0_10px_30px_rgba(140, 82, 255, 0.9)] bg-[#ffffff] sm:w-[16rem] mx-2 sm:mx-4 my-8 text-center rounded-lg px-1 py-2 sm:hover:-translate-y-2 hover:transition-transform">
+    <div className="shadow-[0_10px_30px_rgba(140, 82, 255, 0.9)] bg-[#485050] sm:w-[16rem] mx-2 sm:mx-4 my-8 text-center rounded-lg px-1 py-2 sm:hover:-translate-y-2 hover:transition-transform">
       <YouTube
         className=""
         videoId={videoCode}
@@ -45,10 +39,13 @@ function VideoCard(props) {
         opts={opts}
       />
 
-      <p className="text-md sm:text-xl sm:mb-2"> {props.videoTitle}</p>
+      <p className="text-md sm:text-xl sm:mb-2 text-gray-300">
+        {' '}
+        {props.videoTitle}
+      </p>
       <a
         href={props.videoUrl}
-        className="text-lg font-sans font-semibold hover:text-pink-400"
+        className="text-lg font-sans font-semibold text-slate-300 hover:text-slate-400"
       >
         Watch on Youtube▶️
       </a>
@@ -56,16 +53,16 @@ function VideoCard(props) {
         <button
           type="button"
           onClick={() => props.onLike() && handleHeart()}
-          className="bg-[#fef5ec] shadow-md hover:bg-[#ffffff] text-orange-600 active:translate-y-1 text-xs sm:text-base py-3 rounded-2xl border-none"
+          className="bg-[#6f7272] shadow-md hover:bg-[#2C3333] text-slate-200 active:translate-y-1 text-xs sm:text-base py-3 rounded-2xl border-none"
         >
           Like {heart}
         </button>
         <button
           type="button"
-          onClick={() => props.onComment() && handleBubble()}
-          className="bg-[#fef5ec] shadow-md hover:bg-[#ffffff] text-orange-600 active:translate-y-1 text-xs sm:text-base py-3 rounded-2xl border-none"
+          onClick={() => props.onComment()}
+          className="bg-[#6f7272] shadow-md hover:bg-[#2C3333] text-slate-200 active:translate-y-1 text-xs sm:text-base py-3 rounded-2xl border-none"
         >
-          Comment {bubble}
+          View
         </button>
       </div>
     </div>

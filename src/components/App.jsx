@@ -45,9 +45,6 @@ function App() {
     setAuthenticated((value) => !value);
   }
 
-  function handleComment(video) {
-    console.log(video);
-  }
   return (
     <div className=" text-orange-600 font-allerta">
       {isAuthenticated ? (
@@ -101,7 +98,7 @@ function App() {
               </div>
             </div>
           </div>
-          <Videos onLike={handleSignInClick} onComment={handleComment} />
+          <Videos onLike={handleSignInClick} onComment={handleSignInClick} />
           <Footer />
         </div>
       )}

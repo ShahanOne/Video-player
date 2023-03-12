@@ -51,7 +51,7 @@ function Register(props) {
           x
         </b>
       </p>
-      <div className="bg-[#fef4f0] text-orange-500 mx-8 md:mx-72 rounded-xl">
+      <div className="bg-[#2C3333] text-orange-500 mx-8 md:mx-72 rounded-xl">
         <div className="registerDiv px-8">
           <p className="authenticateText text-xl md:text-3xl my-4 py-4">
             Register and start your selling journey!{' '}
@@ -62,7 +62,7 @@ function Register(props) {
               Username <span style={{ color: 'red' }}>*</span>
             </label>
             <input
-              className="block border-none rounded w-[100%] md:w-[90%] h-8 my-4 md:my-6 focus:outline-none"
+              className="block bg-gray-500 text-slate-100  border-none rounded w-[100%] md:w-[90%] h-8 my-4 md:my-6 focus:outline-none"
               type="text"
               value={userName}
               onChange={handleUserNameChange}
@@ -72,7 +72,7 @@ function Register(props) {
               Password <span style={{ color: 'red' }}>*</span>
             </label>
             <input
-              className="block border-none rounded w-[100%] md:w-[90%] h-8 my-4 md:my-6 focus:outline-none"
+              className="block bg-gray-500 text-slate-100  border-none rounded w-[100%] md:w-[90%] h-8 my-4 md:my-6 focus:outline-none"
               type="password"
               value={password}
               onChange={handlePasswordChange}
