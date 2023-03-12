@@ -1,26 +1,29 @@
 import Navbar from './Navbar';
 import Videos from './Videos';
-// import ListNewItem from './ListNewItem';
-// import MyAccount from './MyAccount';
-// import ItemPage from './ItemPage';
+import UploadNewVideo from './UploadVideo';
+import MyLikes from './MyLikes';
 import { useState } from 'react';
+import YouTube from 'react-youtube';
+import Footer from './Footer';
 
 function UserPage(props) {
   const [isUploadClicked, setUploadClick] = useState(false);
-  const [isLikesClicked, setLikesClick] = useState(false);
-
+  const [isMyLikesClicked, setMyLikesClick] = useState(false);
+  const [focusedVideo, setFocusedVideo] = useState();
   const [seed, setSeed] = useState(1);
+  const [newComment, setComment] = useState('');
+  const [videoComments, setVideoComments] = useState([]);
 
   function handleHome() {
-    setLikesClick(false);
+    setMyLikesClick(false);
     setUploadClick(false);
   }
   function handleNewVideo() {
     setUploadClick(true);
-    setLikesClick(false);
+    setMyLikesClick(false);
   }
   function handleMyLikes() {
-    setLikesClick(true);
+    setMyLikesClick(true);
     setUploadClick(false);
   }
   function handleSignOut() {
@@ -30,11 +33,11 @@ function UserPage(props) {
   function handleRerender() {
     setSeed(Math.random());
     setUploadClick(false);
-    setLikesClick(false);
+    setMyLikesClick(false);
   }
 
   //Add to Likes
-  async function handleWishlist(video) {
+  async function handlelike(video) {
     try {
       const res = await fetch('http://localhost:3001/like', {
         method: 'POST',
@@ -58,6 +61,54 @@ function UserPage(props) {
   function newData(data) {
     props.newUserData(data);
   }
+
+  //comment
+  function handleCommentClick(video) {
+    // console.log(video);
+    setFocusedVideo(video);
+  }
+  function handleCommentChange(e) {
+    const { value } = e.target;
+    setComment(value);
+  }
+  async function handleSubmit(e) {
+    e.preventDefault();
+
+    try {
+      const res = await fetch('http://localhost:3001/comment', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify([
+          {
+            userId: props.userId,
+            newComment: newComment,
+            videoId: focusedVideo._id,
+          },
+        ]),
+      })
+        .then((res) => res.json())
+        .then((data) => data !== 'poop' && setFocusedVideo(data));
+    } catch (err) {
+      console.log(err);
+    }
+  }
+  //Youtube Player
+  let videoCode;
+  // console.log(focusedVideo ? focusedVideo.videoUrl : '');
+  videoCode = focusedVideo
+    ? focusedVideo.videoUrl.split('v=')[1].split('&')[0]
+    : '';
+
+  const opts = {
+    height: '400',
+    width: '700',
+    playerVars: {
+      // https://developers.google.com/youtube/player_parameters
+      autoplay: 0,
+    },
+  };
   return (
     <>
       <Navbar
@@ -70,14 +121,90 @@ function UserPage(props) {
         Nav4={'SignOut'}
         onNav4={handleSignOut}
       />
-      <div className="userDiv">Hello {props.userName} !</div>
+
+      <div>
+        {focusedVideo ? (
+          <center className="bg-orange-100 py-4">
+            <YouTube
+              videoId={videoCode}
+              containerClassName="embed embed-youtube"
+              opts={opts}
+            />
+            <div className="comments">
+              {/* {console.log(videoComments)} */}
+              <ul>
+                {focusedVideo.comments.map((comment) => (
+                  <li>
+                    <p>Anonymous User</p> <p>{comment}</p>{' '}
+                  </li>
+                ))}
+              </ul>
+              <br />
+              <form onSubmit={handleSubmit}>
+                <label htmlFor="newComment">Add a comment</label>
+                <input
+                  type="text"
+                  id="newComment"
+                  onChange={handleCommentChange}
+                  value={newComment}
+                />
+
+                <button
+                  type="submit"
+                  className="bg-blue-400 hover:bg-orange-300 text-white"
+                >
+                  Add
+                </button>
+              </form>
+            </div>
+          </center>
+        ) : (
+          'Nothing'
+        )}
+        <div className="grid grid-cols-2  font-fredoka py-8 lg:py-4 px-8 bg-gradient-to-r from-red-500 to-orange-400">
+          <div className="userPageText my-6 text-white text-2xl md:text-3xl lg:text-4xl">
+            <img
+              className=" rounded-full inline-block w-40"
+              src="/billie.webp"
+              alt=""
+            />
+            <p className="py-2">Hello {props.userName}</p>
+          </div>
+
+          <div className="refresh text-end my-4 lg:my-12 pr-8">
+            <button
+              className="text-white active:translate-y-1 hover:cursor-pointer text-2xl p-4 rounded-lg active:shadow-sm  shadow-lg hover:text-[#f3eeff]"
+              onClick={handleRerender}
+            >
+              Refresh
+            </button>
+          </div>
+        </div>
+        {!isUploadClicked && !isMyLikesClicked ? (
+          <Videos
+            seed={seed}
+            onLike={handlelike}
+            onComment={handleCommentClick}
+          />
+        ) : isUploadClicked ? (
+          <UploadNewVideo
+            newUserData={newData}
+            onTap={handleRerender}
+            userId={props.userId}
+          />
+        ) : isMyLikesClicked ? (
+          <MyLikes likes={props?.likedVideos} />
+        ) : (
+          <Videos
+            seed={seed}
+            onLike={handlelike}
+            onComment={handleCommentClick}
+          />
+        )}
+      </div>
+      <Footer />
     </>
   );
 }
 
 export default UserPage;
-// Todo
-//all listings
-//posted
-//sell status
-//bought

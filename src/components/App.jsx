@@ -44,14 +44,18 @@ function App() {
   function handleSignOut() {
     setAuthenticated((value) => !value);
   }
+
+  function handleComment(video) {
+    console.log(video);
+  }
   return (
-    <div className=" text-[#2e0f6a] font-allerta">
+    <div className=" text-orange-600 font-allerta">
       {isAuthenticated ? (
         <UserPage
           newUserData={refreshUserData}
           userId={userInfo._id}
           userName={userInfo.username}
-          // likes={userInfo.likes}
+          likedVideos={userInfo.likedVideos}
           handleSignOut={handleSignOut}
         />
       ) : (
@@ -97,7 +101,7 @@ function App() {
               </div>
             </div>
           </div>
-          <Videos />
+          <Videos onLike={handleSignInClick} onComment={handleComment} />
           <Footer />
         </div>
       )}

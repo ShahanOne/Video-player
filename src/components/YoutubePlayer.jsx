@@ -32,7 +32,7 @@ function YouTubePlayer(props) {
 
   const opts = {
     height: '220',
-    width: '248',
+    width: '250',
     playerVars: {
       // https://developers.google.com/youtube/player_parameters
       autoplay: 0,

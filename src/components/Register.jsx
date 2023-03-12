@@ -42,7 +42,7 @@ function Register(props) {
   };
 
   return (
-    <div className="font-fredoka bg-gradient-to-r from-red-500 to-orange-400 pb-8 md:p-[3%] w-full h-screen">
+    <div className="font-fredoka bg-gradient-to-r from-red-500 to-orange-400 pb-8 md:p-[3%] fixed w-full h-screen">
       <p className="text-end text-[2rem] px-4">
         <b
           className="hover:cursor-default text-[#e5e0f1] hover:text-white"

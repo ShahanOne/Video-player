@@ -15,7 +15,7 @@ function Items(props) {
     }
 
     getVideosInfo();
-  }, []);
+  }, [props.seed]);
 
   //   console.log(videoInfo);
   return (
@@ -28,11 +28,12 @@ function Items(props) {
               videoTitle={video.title}
               videoUrl={video.videoUrl}
               onLike={() => props.onLike(video)}
+              onComment={() => props.onComment(video)}
             />
           ))}
         </div>
       ) : (
-        <div className="bg-gradient-to-r from-violet-100 to-pink-100 px-2 md:px-28 lg:px-40 grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 pt-8">
+        <div className="bg-gradient-to-r from-red-100 to-orange-100 px-2 md:px-28 lg:px-40 grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 pt-8">
           <SkeletonCard /> <SkeletonCard /> <SkeletonCard /> <SkeletonCard />
           <SkeletonCard /> <SkeletonCard /> <SkeletonCard /> <SkeletonCard />
           <SkeletonCard /> <SkeletonCard /> <SkeletonCard /> <SkeletonCard />
