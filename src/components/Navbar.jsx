@@ -3,10 +3,10 @@ function Navbar(props) {
     window.location.reload();
   }
   return (
-    <nav className="py-[1%] grid grid-cols-1 sm:grid-cols-2 px-10 lg:px-4 font-fredoka bg-gradient-to-r from-red-500 to-orange-400">
+    <nav className="py-[1%] grid grid-cols-1 sm:grid-cols-2 px-4 font-fredoka bg-gradient-to-r from-red-500 to-orange-400">
       <div className="py-2 text-center sm:text-start">
         <button
-          className="text-[#f1f1f6] hover:text-[#ffffff] md:ml-6 text-4xl"
+          className="text-[#f1f1f6] hover:text-[#ffffff] md:ml-6 text-3xl md:text-4xl"
           onClick={handleHome}
         >
           VideoPlaya

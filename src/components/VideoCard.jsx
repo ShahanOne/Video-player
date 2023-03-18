@@ -5,7 +5,8 @@ import YouTube from 'react-youtube';
 
 function VideoCard(props) {
   const [heart, setHeart] = useState('♡');
-  const [bubble, setBubble] = useState('💬');
+  const [height, setHeight] = useState('160');
+  const [width, setWidth] = useState('160');
 
   let videoCode;
   props.videoUrl
@@ -13,14 +14,19 @@ function VideoCard(props) {
     : console.log();
 
   const opts = {
-    height: '220',
-    width: '250',
+    height: height,
+    width: width,
     playerVars: {
       // https://developers.google.com/youtube/player_parameters
       autoplay: 0,
     },
   };
 
+  // if (window.width >= '760px') {
+  //   setWidth('250');
+  // } else {
+  //   setWidth('200');
+  // }
   function handleHeart() {
     if (heart === '♡') {
       setHeart('❤️');
@@ -35,7 +41,6 @@ function VideoCard(props) {
         className=""
         videoId={videoCode}
         containerClassName="embed embed-youtube"
-        // onStateChange={(e) => checkElapsedTime(e)}
         opts={opts}
       />
 
@@ -45,7 +50,7 @@ function VideoCard(props) {
       </p>
       <a
         href={props.videoUrl}
-        className="text-lg font-sans font-semibold text-slate-300 hover:text-slate-400"
+        className="text-sm md:text-lg font-sans font-semibold text-slate-300 hover:text-slate-400"
       >
         Watch on Youtube▶️
       </a>

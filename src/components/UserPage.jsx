@@ -102,8 +102,8 @@ function UserPage(props) {
     : '';
 
   const opts = {
-    height: '420',
-    width: '800',
+    height: '300', //420
+    width: '380', //800
     playerVars: {
       // https://developers.google.com/youtube/player_parameters
       autoplay: 0,
@@ -122,9 +122,9 @@ function UserPage(props) {
         onNav4={handleSignOut}
       />
       {focusedVideo ? (
-        <div className="bg-[#2C3333] py-4 px-80 text-slate-100">
+        <div className="bg-[#2C3333] py-4 md:px-80 text-slate-100">
           <p
-            className="text-end text-3xl font-fredoka cursor-pointer text-orange-500 hover:text-orange-400"
+            className="text-end text-3xl p-2 font-fredoka cursor-pointer text-orange-500 hover:text-orange-400"
             onClick={() => setFocusedVideo('')}
           >
             x
@@ -171,17 +171,17 @@ function UserPage(props) {
         </div>
       ) : (
         <div>
-          <div className="grid grid-cols-2  font-fredoka py-8 lg:py-4 px-8 bg-gradient-to-r from-red-500 to-orange-400">
-            <div className="userPageText my-6 text-white text-2xl md:text-3xl lg:text-4xl">
+          <div className="grid grid-cols-2  font-fredoka py-4 px-4 md:px-8 bg-gradient-to-r from-red-500 to-orange-400">
+            <div className="userPageText md:my-6 text-white text-2xl md:text-3xl lg:text-4xl">
               <img
-                className=" rounded-full inline-block w-40"
+                className=" rounded-full inline-block w-28 md:w-40"
                 src="/billie.webp"
                 alt=""
               />
               <p className="py-2">Hello {props.userName}</p>
             </div>
 
-            <div className="refresh text-end my-4 lg:my-12 pr-8">
+            <div className="refresh text-end my-4 lg:my-12 pr-2 md:pr-8">
               <button
                 className="text-white active:translate-y-1 hover:cursor-pointer text-2xl p-4 rounded-lg active:shadow-sm  shadow-lg hover:text-[#f3eeff]"
                 onClick={handleRerender}

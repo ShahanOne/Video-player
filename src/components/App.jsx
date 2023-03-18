@@ -80,11 +80,11 @@ function App() {
               Nav3="Login/Register"
               onNav3={handleSignInClick}
             />
-            <div className="text-center px-12 py-4">
-              <p className="text-white text-[3.5rem] font-fredoka py-12 ">
+            <div className="text-center px-6 md:px-12 py-4">
+              <p className="text-white text-[2rem] md:text-[3.5rem] font-fredoka py-6 md:py-12 ">
                 Welcome to VideoPlaya !
               </p>
-              <div className="grid grid-cols-2">
+              <div className="grid grid-cols-1 md:grid-cols-2">
                 <img
                   className={`text-center rounded-3xl  ${
                     !isSignClick ? 'animate-slow-bounce' : ''
@@ -92,7 +92,7 @@ function App() {
                   src="/billie.webp"
                   alt=""
                 />
-                <p className="text-white text-[3rem] font-fredoka p-20 ">
+                <p className="text-white text-[1.5rem] md:text-[3rem] font-fredoka p-10 md:p-20 ">
                   Upload, Watch and Like entaertaining videos !
                 </p>
               </div>

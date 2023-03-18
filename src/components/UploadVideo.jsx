@@ -21,7 +21,7 @@ function UploadNewVideo(props) {
     props.onTap();
 
     try {
-      const res = await fetch('http://localhost:3001/new-video', {
+      const res = await fetch('https://videoplayaserver.cyclic.app/new-video', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -41,13 +41,13 @@ function UploadNewVideo(props) {
     }
   };
   return (
-    <div className="font-allerta bg-gradient-to-r from-red-600 to-orange-400  px-[5%] pt-[15%] pb-[50%] lg:p-[2%_25%_15%]">
+    <div className="font-allerta bg-[#2C3333] px-[5%] pt-[15%] pb-[50%] lg:p-[2%_25%_15%]">
       <form
-        className="shadow-xl p-4 lg:p-[5%] bg-[#f3e4d2] rounded-lg"
+        className="shadow-xl p-4 lg:p-[5%] bg-[#485050] rounded-lg"
         onSubmit={handleSubmit}
       >
         <label htmlFor="videoTitle">
-          Video Title <span className="text-red-500">*</span>
+          Video Title <span className="text-red-400">*</span>
         </label>
         <input
           className="block border-none rounded-md w-[100%] h-[2rem] m-[3%_0] focus:outline-none"
@@ -58,7 +58,7 @@ function UploadNewVideo(props) {
           name="itemName"
         />
         <label className="text-md m-[1%_0]" htmlFor="videoUrl">
-          Video Youtube Link <span className="text-red-500">*</span>
+          Video Youtube Link <span className="text-red-400">*</span>
         </label>
         <input
           className="block border-none rounded-md w-[100%] px-2 h-[2rem] m-[3%_0] focus:outline-none"
@@ -74,7 +74,7 @@ function UploadNewVideo(props) {
             style={
               videoTitle && videoUrl
                 ? { visibility: 'hidden' }
-                : { color: '#9b1414' }
+                : { color: 'red' }
             }
           >
             Please fill in the required fields *
@@ -83,7 +83,7 @@ function UploadNewVideo(props) {
         <center>
           {' '}
           <button
-            className="bg-gradient-to-r from-red-500 to-orange-600 shadow-xl hover:to-orange-600 hover:from-red-500  border-[#ff8251] shadow-lg active:translate-y-0.5  text-white text-xl w-[66%] p-[2%] m-[3%_0] rounded-2xl border-2"
+            className="bg-gray-500 shadow-xl hover:bg-gray-600  border-[#4f4c4b] shadow-lg active:translate-y-0.5  text-white text-xl w-[66%] p-[2%] m-[3%_0] rounded-2xl border-2"
             type={videoTitle && videoUrl ? 'submit' : 'button'}
           >
             {' '}
