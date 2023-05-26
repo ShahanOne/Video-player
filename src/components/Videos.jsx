@@ -8,7 +8,8 @@ function Items(props) {
   useEffect(() => {
     async function getVideosInfo() {
       await fetch(
-        'https://nocors.cyclic.app/https://videoplayaserver.cyclic.app/api'
+        'https://videoplayaserver.cyclic.app/api'
+        // 'http://localhost:3001/api'
       )
         .then((res) => res.json())
         .then((data) => setVideoInfo(data));
