@@ -25,7 +25,7 @@ function VideoCard(props) {
   useEffect(() => {
     if (window.innerWidth < 760) {
       console.log('small');
-      setWidth('205');
+      setWidth('160');
     } else if (window.innerWidth >= 760 && window.innerWidth < 1445) {
       console.log('big');
       setWidth('249');
