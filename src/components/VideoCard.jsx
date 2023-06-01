@@ -1,12 +1,13 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './App.css';
 // import YouTubePlayer from './YoutubePlayer';
 import YouTube from 'react-youtube';
 
 function VideoCard(props) {
   const [heart, setHeart] = useState('♡');
-  const [height, setHeight] = useState('160');
-  const [width, setWidth] = useState('160');
+  const [height, setHeight] = useState('180');
+  const [width, setWidth] = useState('248');
+  const [swidth, setSwidth] = useState(window.innerWidth);
 
   let videoCode;
   props.videoUrl
@@ -21,12 +22,18 @@ function VideoCard(props) {
       autoplay: 0,
     },
   };
+  useEffect(() => {
+    if (window.innerWidth < 760) {
+      console.log('small');
+      setWidth('205');
+    } else if (window.innerWidth >= 760 && window.innerWidth < 1445) {
+      console.log('big');
+      setWidth('249');
+    } else {
+      console.log('bruh');
+    }
+  }, []);
 
-  // if (window.width >= '760px') {
-  //   setWidth('250');
-  // } else {
-  //   setWidth('200');
-  // }
   function handleHeart() {
     if (heart === '♡') {
       setHeart('❤️');
@@ -34,7 +41,6 @@ function VideoCard(props) {
       setHeart('♡');
     }
   }
-
   return (
     <div className="shadow-[0_10px_30px_rgba(140, 82, 255, 0.9)] bg-[#485050] sm:w-[16rem] mx-2 sm:mx-4 my-8 text-center rounded-lg px-1 py-2 sm:hover:-translate-y-2 hover:transition-transform">
       <YouTube

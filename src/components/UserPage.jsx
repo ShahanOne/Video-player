@@ -102,8 +102,8 @@ function UserPage(props) {
     : '';
 
   const opts = {
-    height: '300', //420
-    width: '380', //800
+    height: '350', //420
+    width: '580', //800
     playerVars: {
       // https://developers.google.com/youtube/player_parameters
       autoplay: 0,
