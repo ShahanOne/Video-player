@@ -41,16 +41,16 @@ function UploadNewVideo(props) {
     }
   };
   return (
-    <div className="font-allerta bg-[#2C3333] px-[5%] pt-[15%] pb-[50%] lg:p-[2%_25%_15%]">
+    <div className="font-allerta bg-[#1c1c24] px-[5%] pt-[15%] pb-[50%] lg:p-[2%_25%_15%]">
       <form
-        className="shadow-xl p-4 lg:p-[5%] bg-[#485050] rounded-lg"
+        className="shadow-xl p-4 lg:p-[5%] bg-[#24242c] text-purple-500 rounded-lg"
         onSubmit={handleSubmit}
       >
         <label htmlFor="videoTitle">
           Video Title <span className="text-red-400">*</span>
         </label>
         <input
-          className="block border-none rounded-md w-[100%] h-[2rem] m-[3%_0] focus:outline-none"
+          className="block border-none bg-gray-500 text-slate-100 rounded-md w-[100%] h-[2rem] m-[3%_0] focus:outline-none"
           id="videoTitle"
           type="text"
           value={videoTitle}
@@ -61,7 +61,7 @@ function UploadNewVideo(props) {
           Video Youtube Link <span className="text-red-400">*</span>
         </label>
         <input
-          className="block border-none rounded-md w-[100%] px-2 h-[2rem] m-[3%_0] focus:outline-none"
+          className="block border-none bg-gray-500 text-slate-100 rounded-md w-[100%] px-2 h-[2rem] m-[3%_0] focus:outline-none"
           id="videoUrl"
           type="text"
           value={videoUrl}
@@ -74,16 +74,17 @@ function UploadNewVideo(props) {
             style={
               videoTitle && videoUrl
                 ? { visibility: 'hidden' }
-                : { color: 'red' }
+                : { color: 'white', fontSize: 10 }
             }
           >
-            Please fill in the required fields *
+            Please fill in the required fields{' '}
+            <span style={{ color: 'red' }}>*</span>
           </p>
         </div>
         <center>
           {' '}
           <button
-            className="bg-gray-500 shadow-xl hover:bg-gray-600  border-[#4f4c4b] shadow-lg active:translate-y-0.5  text-white text-xl w-[66%] p-[2%] m-[3%_0] rounded-2xl border-2"
+            className="bg-[#363344] shadow-xl  border-[#3c384e] active:translate-y-0.5  text-white text-xl w-[66%] p-[2%] m-[3%_0] rounded-2xl border-2"
             type={videoTitle && videoUrl ? 'submit' : 'button'}
           >
             {' '}

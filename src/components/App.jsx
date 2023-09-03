@@ -1,23 +1,21 @@
+import { useState } from 'react';
 import './App.css';
+// components
 import Navbar from './Navbar';
 import Videos from '../components/Videos';
 import Footer from './Footer';
-import { useState } from 'react';
 import Login from './Login';
 import Register from './Register';
 import UserPage from './UserPage';
-
+import { animateScroll as scroll } from 'react-scroll'; // Import react-scroll
 function App() {
   const [logOrRegister, setLogOrRegister] = useState(true);
-  const [isSignClick, setSignClick] = useState(false);
+  const [showSignInForm, setShowSignInForm] = useState(false);
   const [isAuthenticated, setAuthenticated] = useState(false);
   const [userInfo, setUserInfo] = useState('');
 
   function handleHome() {
     window.location.reload();
-  }
-  function handleSignInClick() {
-    setSignClick((value) => !value);
   }
   function handleUserData(data) {
     setUserInfo(data);
@@ -26,27 +24,13 @@ function App() {
   function refreshUserData(data) {
     setUserInfo(data);
   }
-  function login() {
-    setSignClick(false);
-  }
-  function loginError() {
-    window.alert('user not found,please register or try again');
-  }
-  function register() {
-    window.alert('Registered, You Can Login Now');
-  }
-  function goToLogin() {
-    setLogOrRegister(true);
-  }
-  function goToRegister() {
-    setLogOrRegister(false);
-  }
+
   function handleSignOut() {
     setAuthenticated((value) => !value);
   }
 
   return (
-    <div className=" text-orange-600 font-allerta">
+    <div className="font-allerta">
       {isAuthenticated ? (
         <UserPage
           newUserData={refreshUserData}
@@ -57,48 +41,55 @@ function App() {
         />
       ) : (
         <div className="App">
-          {isSignClick &&
+          {showSignInForm &&
             (logOrRegister ? (
               <Login
-                onLogin={login}
-                onError={loginError}
+                onLogin={() => setShowSignInForm(false)}
                 userData={handleUserData}
-                onGoToRegister={goToRegister}
-                onCut={handleSignInClick}
+                onGoToRegister={() => setLogOrRegister(false)}
+                onCut={() => setShowSignInForm(false)}
               />
             ) : (
               <Register
-                onRegister={register}
-                onGoToLogin={goToLogin}
-                onCut={handleSignInClick}
+                onGoToLogin={() => setLogOrRegister(true)}
+                onCut={() => setShowSignInForm(false)}
               />
             ))}
-          <div className="welcomeDiv bg-gradient-to-r from-red-500 to-orange-400">
+          <div className="welcomeDiv bg-[#1c1c24]">
             <Navbar
               Nav2="Home"
               onNav2={handleHome}
               Nav3="Login/Register"
-              onNav3={handleSignInClick}
+              onNav3={() => {
+                setShowSignInForm(true);
+                scroll.scrollToTop();
+              }}
             />
-            <div className="text-center px-6 md:px-12 py-4">
-              <p className="text-white text-[2rem] md:text-[3.5rem] font-fredoka py-6 md:py-12 ">
-                Welcome to VideoPlaya !
-              </p>
+            <div className=" px-6 md:px-12 py-4">
               <div className="grid grid-cols-1 md:grid-cols-2">
                 <img
                   className={`text-center rounded-3xl  ${
-                    !isSignClick ? 'animate-slow-bounce' : ''
+                    !showSignInForm ? 'animate-slow-bounce' : ''
                   } transition-transform`}
-                  src="/billie.webp"
+                  src="/vid.webp"
                   alt=""
                 />
-                <p className="text-white text-[1.5rem] md:text-[3rem] font-fredoka p-10 md:p-20 ">
+                <p className="text-white text-[1.5rem] md:text-[2rem] font-fredoka p-10 md:p-20 ">
                   Upload, Watch and Like entaertaining videos !
                 </p>
               </div>
             </div>
           </div>
-          <Videos onLike={handleSignInClick} onComment={handleSignInClick} />
+          <Videos
+            onLike={() => {
+              setShowSignInForm(true);
+              scroll.scrollToTop();
+            }}
+            onView={() => {
+              setShowSignInForm(true);
+              scroll.scrollToTop();
+            }}
+          />
           <Footer />
         </div>
       )}

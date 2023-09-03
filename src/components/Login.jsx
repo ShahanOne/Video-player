@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { toast } from 'react-toastify';
 
 function Login(props) {
   const [userName, setUserName] = useState('');
@@ -33,7 +34,9 @@ function Login(props) {
       })
         .then((res) => res.json())
         .then((data) =>
-          data !== 'poop' ? props.userData(data) : props.onError()
+          data !== 'poop'
+            ? props.userData(data)
+            : window.alert('User not found, please Register or try again')
         );
     } catch (err) {
       console.log(err);
@@ -44,7 +47,7 @@ function Login(props) {
   };
 
   return (
-    <div className="font-fredoka bg-gradient-to-r from-red-500 to-orange-400 pb-8 md:p-[3%] fixed w-full h-screen">
+    <div className="font-fredoka pb-8 md:p-[3%] w-full">
       <p className=" text-end text-[2rem] px-4">
         <b
           className="hover:cursor-default font-fredoka text-[#f1e6e0] hover:text-white"
@@ -53,7 +56,7 @@ function Login(props) {
           x
         </b>
       </p>
-      <div className="bg-[#2C3333] text-orange-500 mx-8 md:mx-72 rounded-xl">
+      <div className="bg-[#24242c] text-purple-500 mx-8 md:mx-72 rounded-xl">
         <div className="loginDiv px-8">
           <p className="authenticateText font-fredoka text-xl md:text-3xl my-4 py-4">
             {' '}
@@ -61,7 +64,7 @@ function Login(props) {
           </p>
           <form onSubmit={handleSubmit}>
             <label className="text-lg my-4" htmlFor="userName">
-              Username <span style={{ color: 'red' }}>*</span>
+              Username <span style={{ color: 'white' }}>*</span>
             </label>
             <input
               className="block bg-gray-500 text-slate-100  border-none rounded w-[100%] md:w-[95%] h-8 my-4 md:my-6 focus:outline-none"
@@ -71,7 +74,7 @@ function Login(props) {
               id="userName"
             />
             <label className="text-lg my-4" htmlFor="password">
-              Password <span style={{ color: 'red' }}>*</span>
+              Password <span style={{ color: 'white' }}>*</span>
             </label>
             <input
               className="block bg-gray-500 text-slate-100  border-none rounded w-[100%] md:w-[95%] h-8 my-4 md:my-6 focus:outline-none"
@@ -82,7 +85,7 @@ function Login(props) {
             />
 
             <button
-              className="bg-gradient-to-r from-red-500 to-orange-400 shadow-xl hover:from-red-400 hover:to-orange-600 active:translate-y-0.5 text-white text-2xl my-4 md:my-6 p-[1%]  rounded-lg w-[100%] hover:cursor-pointer"
+              className="bg-[#363344] shadow-xl active:translate-y-0.5 text-white text-2xl my-4 md:my-6 p-[1%]  rounded-lg w-[100%] hover:cursor-pointer"
               type={userName && password ? 'submit' : 'button'}
               onClick={() =>
                 userName && password
@@ -99,7 +102,7 @@ function Login(props) {
             Don't have an account? Register!
           </p>
           <button
-            className="bg-gradient-to-r from-red-500 to-orange-400 shadow-xl hover:from-red-600 hover:to-orange-700 active:translate-y-0.5 text-white text-2xl my-6 p-[1%]  rounded-lg w-[100%] hover:cursor-pointer"
+            className="bg-[#363344] shadow-xl active:translate-y-0.5 text-white text-2xl my-6 p-[1%]  rounded-lg w-[100%] hover:cursor-pointer"
             type="button"
             onClick={props.onGoToRegister}
           >
